@@ -1,4 +1,3 @@
-
 const formatValue = (value: string | number | boolean) => {
   if (typeof value === "string") {
     return value.toUpperCase();
@@ -9,8 +8,6 @@ const formatValue = (value: string | number | boolean) => {
   }
 };
 
-
-
 const getLength = (value: string | number[]) => {
   if (typeof value === "string") {
     return value.length;
@@ -20,7 +17,6 @@ const getLength = (value: string | number[]) => {
     return value.length;
   }
 };
-
 
 class Person {
   name: string;
@@ -37,9 +33,6 @@ class Person {
   }
 }
 
-
-
-
 type FilterType = {
   title: string;
   rating: number;
@@ -48,8 +41,6 @@ type FilterType = {
 const filterByRating = (array: FilterType[]) => {
   return array.filter((item) => item.rating >= 4 && item.rating <= 5);
 };
-
-
 
 interface User {
   id: number;
@@ -63,14 +54,6 @@ const filterActiveUsers = (users: User[]): User[] => {
   return activesUser;
 };
 
-const users = [
-  { id: 1, name: "Rakib", email: "rakib@example.com", isActive: true },
-  { id: 2, name: "Asha", email: "asha@example.com", isActive: false },
-  { id: 3, name: "Rumi", email: "rumi@example.com", isActive: true },
-];
-
-
-
 interface Book {
   title: string;
   author: string;
@@ -83,33 +66,31 @@ const printBookDetails = (book: Book) => {
   return `Title: ${book.title}, Author: ${book.author}, Published Year: ${book.publishedYear}, Available: ${available}`;
 };
 
-const myBook: Book = {
-  title: "The Great Gatsby",
-  author: "F. Scott Fitzgerald",
-  publishedYear: 1925,
-  isAvailable: true,
-};
-
-
-
-//** Problem 7 */
-
 const getUniqueValues = (
   array1: (string | number)[],
   array2: (string | number)[]
-) => {
+): (string | number)[] => {
   const newArr: (string | number)[] = [];
+
+  const hasValue = (arr: (string | number)[], value: string | number) => {
+    for (let k = 0; k < arr.length; k++) {
+      if (arr[k] === value) {
+        return true;
+      }
+    }
+    return false;
+  };
 
   for (let i = 0; i < array1.length; i++) {
     const arr1 = array1[i];
-    if (!newArr.includes(arr1)) {
+    if (!hasValue(newArr, arr1)) {
       newArr.push(arr1);
     }
   }
 
   for (let j = 0; j < array2.length; j++) {
     const arr2 = array2[j];
-    if (!newArr.includes(arr2)) {
+    if (!hasValue(newArr, arr2)) {
       newArr.push(arr2);
     }
   }
@@ -117,13 +98,6 @@ const getUniqueValues = (
   return newArr;
 };
 
-const array1 = [1, 2, 3, 4, 5];
-const array2 = [3, 4, 5, 6, 7];
-// console.log(getUniqueValues(array1, array2));
-
-//! =======================================================================
-
-//** Problem 8 */
 
 type Product = {
   name: string;
@@ -142,10 +116,3 @@ const calculateTotalPrice = (product: Product[]): number => {
   return productTotalPrices;
 };
 
-const products = [
-  { name: "Pen", price: 10, quantity: 2 },
-  { name: "Notebook", price: 25, quantity: 3, discount: 10 },
-  { name: "Bag", price: 50, quantity: 1, discount: 20 },
-];
-
-// console.log(calculateTotalPrice(products));
