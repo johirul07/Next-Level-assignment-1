@@ -1,6 +1,3 @@
-//? Problem Solving with TypeScript
-
-//** Problem 1:
 
 const formatValue = (value: string | number | boolean) => {
   if (typeof value === "string") {
@@ -8,32 +5,22 @@ const formatValue = (value: string | number | boolean) => {
   } else if (typeof value === "number") {
     return value * 10;
   } else if (typeof value === "boolean") {
-    return value ? "true" : "false";
+    return !value;
   }
 };
 
-// console.log("Problem 1", formatValue("jahirul"));
-// console.log("Problem 1", formatValue(123));
-// console.log("Problem 1", formatValue(true));
 
-//! =======================================================================
-
-//** Problem 2 */
 
 const getLength = (value: string | number[]) => {
   if (typeof value === "string") {
     return value.length;
   }
 
-  return value.length;
+  if (Array.isArray(value)) {
+    return value.length;
+  }
 };
 
-// console.log("Problem 2", getLength("typescript"));
-// console.log("Problem 2", getLength([10, 20, 30, 40]));
-
-//! =======================================================================
-
-//** Problem 3 */
 
 class Person {
   name: string;
@@ -47,19 +34,11 @@ class Person {
   getDetails() {
     const details = `'Name: ${this.name}, Age: ${this.age}'`;
     return details;
-    // return details.toString();
   }
 }
 
-const person1 = new Person("John Doe", 30);
-// console.log(person1.getDetails());
 
-const person2 = new Person("Alice", 25);
-// console.log(person2.getDetails());
 
-//! =======================================================================
-
-//** Problem 4 */
 
 type FilterType = {
   title: string;
@@ -70,17 +49,7 @@ const filterByRating = (array: FilterType[]) => {
   return array.filter((item) => item.rating >= 4 && item.rating <= 5);
 };
 
-const books = [
-  { title: "Book A", rating: 4.5 },
-  { title: "Book B", rating: 3.2 },
-  { title: "Book C", rating: 5.0 },
-];
 
-// console.log(filterByRating(books));
-
-//! =======================================================================
-
-//** Problem 5 */
 
 interface User {
   id: number;
@@ -100,11 +69,7 @@ const users = [
   { id: 3, name: "Rumi", email: "rumi@example.com", isActive: true },
 ];
 
-// console.log(filterActiveUsers(users));
 
-//! =======================================================================
-
-//** Problem 6 */
 
 interface Book {
   title: string;
@@ -125,9 +90,7 @@ const myBook: Book = {
   isAvailable: true,
 };
 
-// console.log(printBookDetails(myBook))
 
-//! =======================================================================
 
 //** Problem 7 */
 
